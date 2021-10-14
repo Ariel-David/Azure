@@ -14,7 +14,7 @@ steps:
 
 - task: GitHubComment@0
   inputs:
-    gitHubConnection: 'github.com_Ariel-David'
+    gitHubConnection: 'github.com/Ariel-David'
     repositoryName: 'Ariel-David/Microsoft_Azure'
 
 
