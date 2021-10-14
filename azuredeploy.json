@@ -10,15 +10,6 @@
             },
             "minLength": 3,
             "maxLength": 24
-        },
-        "secondArielStorage": {
-            "type": "string",
-            "defaultValue": "Contoso",
-            "metadata": {
-                "description": "Storage Account Name"
-            },
-            "minLength": 3,
-            "maxLength": 24
         }
     },
     "functions": [],
@@ -30,20 +21,6 @@
             "apiVersion": "2021-04-01",
             "tags": {
                 "displayName": "firstarielstorage"
-            },
-            "location": "[resourceGroup().location]",
-            "kind": "StorageV2",
-            "sku": {
-                "name": "Premium_LRS",
-                "tier": "Premium"
-            }
-        },
-        {
-            "name": "[parameters('secondArielStorage')]",
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2021-04-01",
-            "tags": {
-                "displayName": "secondarielstorage"
             },
             "location": "[resourceGroup().location]",
             "kind": "StorageV2",
