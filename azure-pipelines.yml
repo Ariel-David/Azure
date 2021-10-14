@@ -10,11 +10,13 @@ variables:
  location: "eastus"
  
 steps:
-- script: hostname
 
-- task: GitHubComment@0
-  inputs:
-    gitHubConnection: 'github.com_Ariel-David'
-    repositoryName: 'Ariel-David/Microsoft_Azure'
+- script: echo This runs in the default shell on any machine
+- bash: |
+    echo This multiline script always runs in Bash.
+    echo Even on Windows machines!
+- pwsh: |
+    Write-Host "This multiline script always runs in PowerShell Core."
+    Write-Host "Even on non-Windows machines!"
 
 
