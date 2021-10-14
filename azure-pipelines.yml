@@ -20,11 +20,7 @@ steps:
       -ResourceGroupName $(myResourceGroupName) `
       -TemplateFile 'azuredeploy.json' `
       -TemplateParameterFile 'azuredeploy.parameters.json'
-
-      New-AzResourceGroupDeployment -Name Deployment_Create_storageaccount_B `
-      -ResourceGroupName $(myResourceGroupName) `
-      -TemplateFile 'azuredeploy.json' `
-      -TemplateParameterFile 'azuredeploy.parameters.json'
+     
     
 
 
