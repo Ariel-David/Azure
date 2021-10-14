@@ -20,20 +20,16 @@ steps:
       $location = "eastus"
       $resourceGroup = "ArielResourceGroup"
       New-AzResourceGroup -Name $resourceGroup -Location $location
-      
-      $storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup `
-        -Name "mystorageaccount1" `
-        -SkuName Standard_LRS `
-        -Location $location `
-      
-      $ctx = $storageAccount.Context
-      
-      $storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup `
-        -Name "mystorageaccount2" `
-        -SkuName Standard_LRS `
-        -Location $location `
-      
-      $ctx = $storageAccount.Context
+
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+     -ResourceGroupName $resourceGroup `
+     -TemplateFile 'azuredeploy.json' `
+     -TemplateParameterFile 'azuredeploy.parameters.json'
+
+
 
 
 
