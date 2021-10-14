@@ -10,11 +10,24 @@ variables:
  location: "eastus"
  
 steps:
-- task: PublishCodeCoverageResults@1
+- script: hostname
+
+- task: GitHubComment@0
   inputs:
-    codeCoverageTool: 'JaCoCo'
-    summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/site/jacoco/jacoco.xml'
-    reportDirectory: '$(System.DefaultWorkingDirectory)/**/site/jacoco'
-    failIfCoverageEmpty: true
+    gitHubConnection: 'github.com_Ariel-David'
+    repositoryName: 'Ariel-David/Microsoft_Azure'
+
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      New-AzResourceGroupDeployment -Name Deployment_Create_storageaccount_A `
+      -ResourceGroupName $(myResourceGroupName) `
+      -TemplateFile 'azuredeploy.json' `
+      -TemplateParameterFile 'azuredeploy.parameters.json'
+      New-AzResourceGroupDeployment -Name Deployment_Create_storageaccount_B `
+      -ResourceGroupName $(myResourceGroupName) `
+      -TemplateFile 'azuredeploy.json' `
+      -TemplateParameterFile 'azuredeploy.parameters.json'
 
 
