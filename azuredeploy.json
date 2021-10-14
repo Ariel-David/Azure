@@ -1,8 +1,17 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "$ schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstArielStorage": {
+            "type": "string",
+            "defaultValue": "Contoso",
+            "metadata": {
+                "description": "Storage Account Name"
+            },
+            "minLength": 3,
+            "maxLength": 24
+        },
+        "secondArielStorage": {
             "type": "string",
             "defaultValue": "Contoso",
             "metadata": {
@@ -16,13 +25,27 @@
     "variables": {},
     "resources": [
         {
-            "name": "[parameters('firstArielStorage')]",
+            "name": "[parameters ('firstArielStorage')]",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2021-04-01",
             "tags": {
                 "displayName": "firstarielstorage"
             },
-            "location": "[resourceGroup().location]",
+            "location": "[resourceGroup (). location]",
+            "kind": "StorageV2",
+            "sku": {
+                "name": "Premium_LRS",
+                "tier": "Premium"
+            }
+        },
+        {
+            "name": "[parameters ('secondArielStorage')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2021-04-01",
+            "tags": {
+                "displayName": "secondarielstorage"
+            },
+            "location": "[resourceGroup (). location]",
             "kind": "StorageV2",
             "sku": {
                 "name": "Premium_LRS",
