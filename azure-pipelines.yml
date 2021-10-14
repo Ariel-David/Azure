@@ -12,6 +12,12 @@ variables:
 steps:
 - script: hostname
 
+- task: GitHubComment@0
+  inputs:
+    gitHubConnection: 'github.com_Ariel-David'
+    repositoryName: 'Ariel-David/Microsoft_Azure'
+
+
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
