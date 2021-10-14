@@ -16,6 +16,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
+      Connect-AzAccount
       Install-Module -Name Az -AllowClobber
       
       Get-AzLocation | select Location
