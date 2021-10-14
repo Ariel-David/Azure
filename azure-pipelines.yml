@@ -12,17 +12,11 @@ variables:
 steps:
 - script: hostname
 
-- task: GitHubComment@0
-  inputs:
-    gitHubConnection: 'github.com/Ariel-David'
-    repositoryName: 'Ariel-David/Microsoft_Azure'
-
-
 - task: PowerShell@2
-  inputs:
+ inputs:
     targetType: 'inline'
-    script: 
-     New-AzResourceGroupDeployment -ResourceGroupName ArielResourceGroup -TemplateFile azuredeploy.json
+    script: |
+    az storage account create --name arielstorageaccount4 --resource-group ArielResourceGroup --kind StorageV2 --location eastus
      
      
     
