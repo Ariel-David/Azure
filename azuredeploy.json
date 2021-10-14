@@ -4,6 +4,7 @@
     "parameters": {
         "firstArielStorage": {
             "type": "string",
+            "defaultValue": "Contoso"
             "metadata": {
                 "description": "Storage Account Name"
             },
