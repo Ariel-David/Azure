@@ -15,24 +15,28 @@ steps:
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
-    script: 'az storage account create --name arielstorageaccount4 --resource-group ArielResourceGroup --kind StorageV2 --location eastus'
-
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
     script: |
-      $resourceGroup = "myResourceGroup1"
+      Install-Module -Name Az -AllowClobber
+      
+      Get-AzLocation | select Location
+      $location = "eastus"
+      $resourceGroup = "ArielResourceGroup"
       New-AzResourceGroup -Name $resourceGroup -Location $location
+      
       $storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup `
         -Name "mystorageaccount1" `
         -SkuName Standard_LRS `
         -Location $location `
       
       $ctx = $storageAccount.Context
+      
       $storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup `
         -Name "mystorageaccount2" `
         -SkuName Standard_LRS `
         -Location $location `
       
       $ctx = $storageAccount.Context
+
+
+
 
