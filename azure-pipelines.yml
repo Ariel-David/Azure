@@ -29,6 +29,15 @@ steps:
      -TemplateFile 'azuredeploy.json' `
      -TemplateParameterFile 'azuredeploy.parameters.json'
 
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      New-AzResourceGroupDeployment `
+      -Name Deployment_VM `
+      -ResourceGroupName $resourceGroup `
+      -TemplateFile 'windowsServer.json'
+
 
 
 
