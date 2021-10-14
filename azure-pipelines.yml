@@ -1,32 +1,20 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - master
 
 pool: MyAgent
 
+variables:
+ myResourceGroupName: ArielResourceGroup
+ subscriptionName: "MSEC_Candidates_Homeworks"
+ subscriptionID: "a8108c2b-496c-424d-8347-ecc8afb6384c"
+ location: "eastus"
+ 
 steps:
- - task: AzureCLI@2
-  displayName: Azure CLI
+- script: hostname
+
+- task: GitHubComment@0
   inputs:
-    azureSubscription: <Name of the Azure Resource Manager service connection>
-    scriptType: ps
-    scriptLocation: inlineScript
-    inlineScript: |
-      az --version
-      az account show
-- task: AzureCLI@2
-  displayName: Azure CLI
-  inputs:
-    azureSubscription: <Name of the Azure Resource Manager service connection>
-    scriptType: ps
-    scriptLocation: inlineScript
-    arguments:
-      -Arg1 val1 `
-      -Arg2 val2 `
-      -Arg3 val3
-    inlineScript: |
-      az login --allow-no-subscription      
+    gitHubConnection: 'github.com_Ariel-David'
+    repositoryName: 'Ariel-David/Microsoft_Azure'
+
+
