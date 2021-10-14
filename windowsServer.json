@@ -17,7 +17,7 @@
     },
     "adminPassword": {
       "type": "secureString",
-      "minLength": 12,
+      "minLength": 3,
       "metadata": {
         "description": "Password for the Virtual Machine."
       }
