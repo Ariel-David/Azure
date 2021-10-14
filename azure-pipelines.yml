@@ -16,7 +16,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: 
-     New-AzResourceGroupDeployment -ResourceGroupName <ArielResourceGroup> -TemplateFile <azuredeploy.json>
+     New-AzResourceGroupDeployment -ResourceGroupName ArielResourceGroup -TemplateFile azuredeploy.json
      
      
     
