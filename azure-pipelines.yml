@@ -15,7 +15,16 @@ steps:
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
-    script: echo "Enter the Resource Group name:"
+    script: |
+      New-AzResourceGroupDeployment -Name Deployment_Create_storageaccount_A `
+      -ResourceGroupName $(myResourceGroupName) `
+      -TemplateFile 'azuredeploy.json' `
+      -TemplateParameterFile 'azuredeploy.parameters.json'
+
+      New-AzResourceGroupDeployment -Name Deployment_Create_storageaccount_B `
+      -ResourceGroupName $(myResourceGroupName) `
+      -TemplateFile 'azuredeploy.json' `
+      -TemplateParameterFile 'azuredeploy.parameters.json'
     
 
 
