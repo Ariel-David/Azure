@@ -10,10 +10,11 @@ variables:
  location: "eastus"
  
 steps:
-
-- script: echo This runs in the default shell on any machine
-- pwsh: |
-    Write-Host "This multiline script always runs in PowerShell Core."
-    Write-Host "Even on non-Windows machines!"
+  task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: "JaCoCo"
+    summaryFileLocation: "$(System.DefaultWorkingDirectory)/**/site/jacoco/jacoco.xml"
+    reportDirectory: "$(System.DefaultWorkingDirectory)/**/site/jacoco"
+    failIfCoverageEmpty: true
 
 
