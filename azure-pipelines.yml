@@ -22,7 +22,7 @@ steps:
     targetType: 'inline'
     script: |
       New-AzResourceGroupDeployment -Name myresource `
-      >>       -ResourceGroupName ArielResourceGroup `
+      >>       -ResourceGroupName ArielResourceGroup2 `
       >>       -TemplateFile "C:\Users\ariel\Microsoft Azure\Templates\azuredeploy.json" `
       >>       -TemplateParameterFile "C:\Users\ariel\Microsoft Azure\Templates\azuredeploy.parameters.json"
 
