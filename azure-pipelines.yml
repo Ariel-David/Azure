@@ -21,10 +21,10 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      New-AzResourceGroupDeployment -Name Deployment_Create_storageaccount_A `
-            -ResourceGroupName $(myResourceGroupName) `
-            -TemplateFile 'azuredeploy.json' `
-            -TemplateParameterFile 'azuredeploy.parameters.json'
+      New-AzResourceGroupDeployment -Name myresource `
+      >>       -ResourceGroupName ArielResourceGroup `
+      >>       -TemplateFile "C:\Users\ariel\Microsoft Azure\Templates\azuredeploy.json" `
+      >>       -TemplateParameterFile "C:\Users\ariel\Microsoft Azure\Templates\azuredeploy.parameters.json"
 
 
 
