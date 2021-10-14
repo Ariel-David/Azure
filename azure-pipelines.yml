@@ -15,11 +15,9 @@ steps:
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
-    script: |
-      New-AzResourceGroupDeployment -Name Deployment_Create_storageaccount_A `
-      -ResourceGroupName $(myResourceGroupName) `
-      -TemplateFile 'azuredeploy.json' `
-      -TemplateParameterFile 'azuredeploy.parameters.json'
+    script: 
+     New-AzResourceGroupDeployment -ResourceGroupName <ArielResourceGroup> -TemplateFile <azuredeploy.json>
+     
      
     
 
