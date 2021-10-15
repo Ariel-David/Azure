@@ -20,15 +20,21 @@ steps:
       $location = "eastus"
       $resourceGroup = "ArielResourceGroup"
       New-AzResourceGroup -Name $resourceGroup -Location $location
-
+      
+#Task 2
+#Create an ARM template for storage account
+#And create 2 storage accounts
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
     script: |
-      ResourceGroupName $resourceGroup `
+     New-AzResourceGroupDeployment -Name storageaccount_A `
+     -ResourceGroupName $resourceGroup `
      -TemplateFile 'azuredeploy.json' `
      -TemplateParameterFile 'azuredeploy.parameters.json'
 
+#Task 3
+#Create an ARM template for a Windows server
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
