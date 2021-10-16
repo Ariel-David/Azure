@@ -60,7 +60,7 @@ steps:
        Get-AzMetricDefinition -ResourceId $resourceId2
          Get-AzMetric -ResourceId $resourceId2 -MetricNames "UsedCapacity" -TimeGrain 01:00:00
          
-      #create dashboard
+    #create dashboard
       New-AzResourceGroupDeployment -Name Dashboard_Resource_Group `
       -ResourceGroupName $resourceGroup`
       -TemplateFile 'DashboardTemplate.json'
