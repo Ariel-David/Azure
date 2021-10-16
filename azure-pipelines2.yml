@@ -8,31 +8,27 @@ variables:
  subscriptionName: "MSEC_Candidates_Homeworks"
  subscriptionID: "a8108c2b-496c-424d-8347-ecc8afb6384c"
  location: "eastus"
- 
+
 steps:
 - script: hostname
 
-- task: PowerShell@2
+- task: AzurePowerShell@5
   inputs:
-    targetType: 'inline'
-    script: |
+    ScriptType: 'InlineScript'
+    Inline: |
       Get-AzLocation | select Location
-      $location = "eastus"
-      $resourceGroup = "ArielResourceGroup"
-      New-AzResourceGroup -Name $resourceGroup -Location $location
-      
-#Task 2
-#Create an ARM template for storage account
-#And create 2 storage accounts
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: |
-     New-AzResourceGroupDeployment -Name storageaccount_A `
-     -ResourceGroupName $resourceGroup `
-     -TemplateFile 'azuredeploy.json' `
-     -TemplateParameterFile 'azuredeploy.parameters.json'
+            $location = "eastus"
+            $resourceGroup = "ArielResourceGroup"
+            New-AzResourceGroup -Name $resourceGroup -Location $location
 
+- task: AzurePowerShell@5
+  inputs:
+    ScriptType: 'InlineScript'
+    Inline: |
+      New-AzResourceGroupDeployment -Name storageaccount_A `
+           -ResourceGroupName $resourceGroup `
+           -TemplateFile 'azuredeploy.json' `
+           -TemplateParameterFile 'azuredeploy.parameters.json'
 
 
 
