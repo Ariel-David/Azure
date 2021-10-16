@@ -10,7 +10,6 @@ variables:
  location: "eastus"
  
 steps:
-- script: hostname
 
 - task: PowerShell@2
   inputs:
@@ -21,9 +20,7 @@ steps:
       $resourceGroup = "ArielResourceGroup"
       New-AzResourceGroup -Name $resourceGroup -Location $location
       
-#Task 2
-#Create an ARM template for storage account
-#And create 2 storage accounts
+#Create an ARM (Azure Resource Manager) template for storage account and create 2 storage accounts
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
@@ -33,8 +30,7 @@ steps:
      -TemplateFile 'azuredeploy.json' `
      -TemplateParameterFile 'azuredeploy.parameters.json'
 
-#Task 3
-#Create an ARM template for a Windows server
+#Create an ARM template for a Windows 
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
