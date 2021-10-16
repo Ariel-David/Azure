@@ -2,12 +2,6 @@ trigger:
 - master
 
 pool: MyAgent
-
-variables:
- myResourceGroupName: ArielResourceGroup
- subscriptionName: "MSEC_Candidates_Homeworks"
- subscriptionID: "a8108c2b-496c-424d-8347-ecc8afb6384c"
- location: "eastus"
  
 steps:
 
@@ -39,6 +33,19 @@ steps:
       -Name Deployment_VM `
       -ResourceGroupName $resourceGroup `
       -TemplateFile 'windowsServer.json'
+      
+#create, upload and copy 100 blobs from Storage account A to B,execute it on the server
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      $SubscriptionID= "a8108c2b-496c-424d-8347-ecc8afb6384c"
+      Set-AzContext -Subscription $SubscriptionID 
+            $result = Invoke-AzVMRunCommand `
+             -ResourceGroupName $resourceGroup `
+             -VMName simple-vm `
+             -CommandId RunPowerShellScript `
+             -ScriptPath C:\Users\ariel\Microsoft.Azure\Blobs.ps1
 
 
 
