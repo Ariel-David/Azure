@@ -1,8 +1,0 @@
-﻿{
-  "agentId": 10,
-  "agentName": "LAPTOP-CQ3FU19M",
-  "poolId": 10,
-  "poolName": "MyAgent",
-  "serverUrl": "https://dev.azure.com/arieldavid642/",
-  "workFolder": "_work"
-}
